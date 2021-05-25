@@ -1,0 +1,10 @@
+.header{
+    display: flex;
+    justify-content: space-between;
+}
+
+.manage{
+    font-size: 18px;
+    color: #bfbfbf;
+    margin-right: 20px;
+}

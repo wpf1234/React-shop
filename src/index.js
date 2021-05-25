@@ -3,11 +3,32 @@ import ReactDOM from 'react-dom';
 import './index.css';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
+import { BrowserRouter as Router, Switch, Route, Redirect } from 'react-router-dom'
+import { mainRoutes } from './routes'
 
 ReactDOM.render(
-  <React.StrictMode>
-    <App />
-  </React.StrictMode>,
+  <Router>
+    <Switch>
+      {/* <Route path="/login" component={Login} />
+      <Route path="/products" component={List} /> */}
+      <Route 
+        path="/admin" 
+        render ={
+          routeProps => <App {...routeProps} />
+        }
+      />
+      {
+        mainRoutes.map( route => {
+          return(
+            <Route key={route.path} {...route} />
+          )
+        })
+      }
+      {/* 重定向，当访问管理后台时，做一个设置 */}
+      <Redirect to="/admin" from='/' />
+      <Redirect to="/404" />
+    </Switch>
+  </Router>,
   document.getElementById('root')
 );
 

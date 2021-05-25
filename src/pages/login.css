@@ -1,0 +1,16 @@
+.login-form{
+    width: 480px;
+    position: relative;
+    left: 50%;
+    top: 50%;
+    transform: translate3d(-50%, -50%,0);
+    /* 设置元素透明度 0~1.0,0全透明,1不透明 */
+    opacity: 0.9;
+}
+
+.ant-card-head-title{
+    font-size: 25px;
+    text-align: center;
+    font-weight: bold;
+    padding: 20px 40px;
+}
