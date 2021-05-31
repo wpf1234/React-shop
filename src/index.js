@@ -5,30 +5,34 @@ import App from './App';
 import reportWebVitals from './reportWebVitals';
 import { BrowserRouter as Router, Switch, Route, Redirect } from 'react-router-dom'
 import { mainRoutes } from './routes'
+import { ConfigProvider } from 'antd'
+import { ZHCN } from 'antd/lib/locale/zh_CN'
 
 ReactDOM.render(
-  <Router>
-    <Switch>
-      {/* <Route path="/login" component={Login} />
-      <Route path="/products" component={List} /> */}
-      <Route 
-        path="/admin" 
-        render ={
-          routeProps => <App {...routeProps} />
+  <ConfigProvider locale={ZHCN}>
+    <Router>
+      <Switch>
+        {/* <Route path="/login" component={Login} />
+        <Route path="/products" component={List} /> */}
+        <Route 
+          path="/admin" 
+          render ={
+            routeProps => <App {...routeProps} />
+          }
+        />
+        {
+          mainRoutes.map( route => {
+            return(
+              <Route key={route.path} {...route} />
+            )
+          })
         }
-      />
-      {
-        mainRoutes.map( route => {
-          return(
-            <Route key={route.path} {...route} />
-          )
-        })
-      }
-      {/* 重定向，当访问管理后台时，做一个设置 */}
-      <Redirect to="/admin" from='/' />
-      <Redirect to="/404" />
-    </Switch>
-  </Router>,
+        {/* 重定向，当访问管理后台时，做一个设置 */}
+        <Redirect to="/admin" from='/' />
+        <Redirect to="/404" />
+      </Switch>
+    </Router>
+  </ConfigProvider>,
   document.getElementById('root')
 );
 
